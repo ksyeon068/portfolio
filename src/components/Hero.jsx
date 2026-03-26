@@ -20,7 +20,7 @@ const Hero = () => {
         visible: {
             opacity: 1,
             transition: {
-            delay: 0.6,
+            delay: 0.8,
             duration: 0.1,
             },
         },

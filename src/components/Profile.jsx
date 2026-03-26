@@ -3,7 +3,12 @@ import React from 'react';
 const Profile = () => {
     return (
         <div>
-            내 프로필
+            <div className="profile-left">
+                <img src="./" alt="프로필용이미지" />
+                <span>김세연</span>
+                <p></p>
+            </div>
+            <div className="profile-right"></div>
         </div>
     );
 };

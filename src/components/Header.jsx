@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <header className='header'>
             <div className='inner'>
-                <h1>Logo</h1>
+                <h1>seyeon</h1>
                 <ul>
                     {menu.map((item)=>(
                         <li key={item} onClick={()=> scrollToSection(item)}>{item}</li>
