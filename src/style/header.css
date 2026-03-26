@@ -1,0 +1,1 @@
+.header{position:fixed;top:0;left:0;width:100%;height:80px;z-index:1000}.header .inner{display:flex;justify-content:space-between;height:80px;align-items:center}.header .inner h1{color:#fff}.header .inner ul{display:flex;gap:20px}.header .inner ul li{font-size:20px;cursor:pointer;color:#fff}
