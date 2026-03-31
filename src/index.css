@@ -2,6 +2,6 @@
 ul{list-style: none;}
 
 .inner{
-    width: 1440px;
-    margin: 0 auto;
+    padding: 0 240px;
+    height: 100vh;
 }
