@@ -43,14 +43,17 @@ const Projects = () => {
                     <div className="textBox">
                         <h3 className="title">{slides[activeIndex]?.title}</h3>
                         <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
+                        <a href={slides.gitLink} target="_blank"></a>
                     </div>
     
                     {/* 썸네일 */}
                     <Swiper
+                        modules={[Mousewheel]}
                         onSwiper={setThumbsSwiper}
                         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                         direction="vertical"
-                        slidesPerView={3}
+                        slidesPerView={6}
+                        mousewheel={true}
                         className="thumbsSwiper"
                     >
                         {slides.map((item, i) => (
