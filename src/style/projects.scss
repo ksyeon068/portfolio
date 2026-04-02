@@ -1,4 +1,4 @@
-.projects {
+/* .projects {
     overflow: hidden;
     display: flex;
     width: 100%;
@@ -85,4 +85,96 @@
     }
     
 
+
+ */
+
+
+ .projects {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    gap: 40px;
+    background: #000;
+    align-items: center;
+
+    .leftArea {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        .textBox {
+            margin: 0 0 40px 30%;
+
+            .title {
+                font-size: 28px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                color: #fff;
+            }
+
+            .subtitle {
+                font-size: 16px;
+                line-height: 150%;
+                white-space: pre-line;
+                color: #fff;
+            }
+        }
+
+        .thumbsSwiper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            padding-left: 50px;
+
+            .swiper-wrapper {
+                gap: 10px;
+            }
+
+            .swiper-slide {
+                height: 80px;
+                display: flex;
+                align-items: center;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0,0,0,0.5);
+                    transition: 0.3s;
+                }
+            }
+
+            .swiper-slide-thumb-active::after {
+                background: rgba(0,0,0,0);
+            }
+        }
+    }
+
+    .mainSwiper {
+        width: 60%;
+        height: 70vh;
+
+        .swiper-wrapper {
+            height: 100%;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
 

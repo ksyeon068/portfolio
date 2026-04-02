@@ -43,7 +43,7 @@ const Projects = () => {
                     <div className="textBox">
                         <h3 className="title">{slides[activeIndex]?.title}</h3>
                         <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
-                        <a href={slides.gitLink} target="_blank"></a>
+                        <a href={slides[activeIndex]?.gitLink} target="_blank">Git</a>
                     </div>
     
                     {/* 썸네일 */}
