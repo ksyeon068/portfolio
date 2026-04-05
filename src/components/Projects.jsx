@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs, Mousewheel } from "swiper/modules";
 
@@ -20,7 +20,7 @@ const slides = [
   {
     img: "/img/slider2.jpg",
     title: "관악성모이비인후과 클론코딩",
-    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작  \n 개인100%",
+    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작 \n 개인100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-S-ENT/",
     gitLink: "https://github.com/ksyeon068/Gwanak-S-ENT"
   },
@@ -36,10 +36,59 @@ const slides = [
 
 const Projects = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const [mainSwiper, setMainSwiper] = useState(null);
+    const containerRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
+    const isScrolling = useRef(false);
+
+    useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const wheelHandler = (e) => {
+        if (!mainSwiper || isScrolling.current) return;
+
+        const isFirst = mainSwiper.activeIndex === 0;
+        const isLast = mainSwiper.activeIndex === slides.length - 1;
+
+        // 👉 첫 슬라이드에서 위 → 스크롤 허용
+        if (isFirst && e.deltaY < 0) return;
+
+        // 👉 마지막 슬라이드에서 아래 → 스크롤 허용
+        if (isLast && e.deltaY > 0) return;
+
+        // 👉 핵심: 여기서 막아야 함
+        e.preventDefault();
+
+        isScrolling.current = true;
+
+        if (e.deltaY > 0) {
+            mainSwiper.slideNext();
+        } else {
+            mainSwiper.slidePrev();
+        }
+
+        setTimeout(() => {
+            isScrolling.current = false;
+        }, 700);
+    };
+
+    el.addEventListener("wheel", wheelHandler, { passive: false });
+
+    return () => {
+        el.removeEventListener("wheel", wheelHandler);
+    };
+    }, [mainSwiper]);
+
+    
+
     return (
-        <div className='projects'>
+        <div 
+            className='projects' 
+            ref={containerRef}
+            style={{ overscrollBehavior: "contain" }}
+        >
                 <div className="leftArea">
                     {/* 텍스트 */}
                     <div className="textBox">
@@ -55,7 +104,8 @@ const Projects = () => {
                         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                         direction="vertical"
                         slidesPerView={6}
-                        mousewheel={true}
+                        mousewheel={false}
+                        touchReleaseOnEdges={true}
                         className="thumbsSwiper"
                     >
                         {slides.map((item, i) => (
@@ -64,15 +114,18 @@ const Projects = () => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    <div className="scrollbox"></div>
                 </div>
     
                 {/* 메인슬라이드이미지 */}
                 <Swiper
                     modules={[Thumbs, Mousewheel]}
+                    onSwiper={setMainSwiper}
                     thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                     direction="vertical"
-                    mousewheel={{releaseOnEdges: true}}
+                    mousewheel={false}
                     slidesPerView={1}
+                    touchReleaseOnEdges={true}
                     onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                     className="mainSwiper"
                 >
