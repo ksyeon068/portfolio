@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs, Mousewheel } from "swiper/modules";
 
+import { FaGithub } from "react-icons/fa6";
+
 import "swiper/css";
 import "swiper/css/thumbs";
 
@@ -11,21 +13,21 @@ const slides = [
   {
     img: "/img/slider1.jpg",
     title: "관악구청 클론코딩",
-    subtitle: "html / css / swiper / API / JavaScript \n 메인페이지만 제작",
+    subtitle: "html / css / swiper / API / JavaScript \n 메인페이지만 제작 \n 개인100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-gu_clone/",
     gitLink: "https://github.com/ksyeon068/Gwanak-gu_clone"
   },
   {
     img: "/img/slider2.jpg",
     title: "관악성모이비인후과 클론코딩",
-    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작",
+    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작  \n 개인100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-S-ENT/",
     gitLink: "https://github.com/ksyeon068/Gwanak-S-ENT"
   },
   {
     img: "/img/slider3.jpg",
     title: "MoodScape",
-    subtitle: "react / scss / API / swiper \n 팀프로젝트 / git관리 / Vercel배포 / Header, Footer, Section3",
+    subtitle: "react / scss / API / swiper \n 팀프로젝트 / git관리 / Vercel배포 \n Header, Footer, Section3",
     siteLink: "https://mood-scape-umber.vercel.app/",
     gitLink: "https://github.com/ksyeon068/MoodScape"
   }
@@ -43,7 +45,7 @@ const Projects = () => {
                     <div className="textBox">
                         <h3 className="title">{slides[activeIndex]?.title}</h3>
                         <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
-                        <a href={slides[activeIndex]?.gitLink} target="_blank">Git</a>
+                        <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
                     </div>
     
                     {/* 썸네일 */}
