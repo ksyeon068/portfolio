@@ -4,7 +4,7 @@
     width: 100%;
     height: 100vh;
     gap: 40px;
-    background: #000;
+    background: #111;
         .leftArea {
             width: 30%;
             display: flex;
@@ -41,6 +41,8 @@
                     .swiper-slide{
                         position: relative;
                         display: flex;
+                        width: 100%;
+                        height: 100px;
                         img {
                             width: 100%;
                             height: 100%;
@@ -56,7 +58,7 @@
                     }
                     .swiper-slide-thumb-active {
                         &::after {
-                            background: rgba(0,0,0,0); // 어두운거 제거
+                            background: rgba(0, 0, 0, 0) // 어두운거 제거
                         }
                     }
                 }
@@ -77,19 +79,34 @@
 
     .mainSwiper{
         width: 60%;
+        height: 80%;
         flex: none;
+        position: relative;
+        top: 10%;
         .swiper-wrapper {
-                height: 100%;
                 .swiper-slide{
+                    width: 100%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     position: relative;
+                    overflow: hidden;
+                    a {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden; // 이미지 확대를 가두는 틀
+                    }
                     img {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                        transition: transform 0.5s;
                     }
+                    
+                }
+                &:hover img {
+                    transform: scale(1.1); 
                 }
             }
     }
