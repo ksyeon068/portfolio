@@ -35,8 +35,8 @@ const slides = [
     img: "/img/slider4.jpg",
     title: "ECLAT",
     subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details ",
-    siteLink: "https://mood-scape-umber.vercel.app/",
-    gitLink: "https://github.com/ksyeon068/MoodScape"
+    siteLink: "https://eclat-t.vercel.app/",
+    gitLink: "https://github.com/seongeun040624/eclatT.git"
   }
 ];
 
