@@ -30,6 +30,13 @@ const slides = [
     subtitle: "react / scss / API / swiper \n 팀프로젝트 / git관리 / Vercel배포 \n Header, Footer, Section3",
     siteLink: "https://mood-scape-umber.vercel.app/",
     gitLink: "https://github.com/ksyeon068/MoodScape"
+  },
+  {
+    img: "/img/slider4.jpg",
+    title: "ECLAT",
+    subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details ",
+    siteLink: "https://mood-scape-umber.vercel.app/",
+    gitLink: "https://github.com/ksyeon068/MoodScape"
   }
 ];
 
@@ -43,42 +50,41 @@ const Projects = () => {
     const isScrolling = useRef(false);
 
     useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+        const el = containerRef.current;
+        if (!el) return;
 
-    const wheelHandler = (e) => {
-        if (!mainSwiper || isScrolling.current) return;
+        const wheelHandler = (e) => {
+            if (!mainSwiper) return;
 
-        const isFirst = mainSwiper.activeIndex === 0;
-        const isLast = mainSwiper.activeIndex === slides.length - 1;
+            const isFirst = mainSwiper.activeIndex === 0;
+            const isLast = mainSwiper.activeIndex === slides.length - 1;
 
-        // 👉 첫 슬라이드에서 위 → 스크롤 허용
-        if (isFirst && e.deltaY < 0) return;
+            const isMovingNext = e.deltaY > 0 && !isLast;
+            const isMovingPrev = e.deltaY < 0 && !isFirst;
 
-        // 👉 마지막 슬라이드에서 아래 → 스크롤 허용
-        if (isLast && e.deltaY > 0) return;
+            if (isMovingNext || isMovingPrev) {
+                if (e.cancelable) e.preventDefault();
 
-        // 👉 핵심: 여기서 막아야 함
-        e.preventDefault();
+                if (isScrolling.current) return;
+                
+                isScrolling.current = true;
+                if (e.deltaY > 0) {
+                    mainSwiper.slideNext();
+                } else {
+                    mainSwiper.slidePrev();
+                }
 
-        isScrolling.current = true;
+                setTimeout(() => {
+                    isScrolling.current = false;
+                }, 500);
+            }
+            
+        };
+        el.addEventListener("wheel", wheelHandler, { passive: false });
 
-        if (e.deltaY > 0) {
-            mainSwiper.slideNext();
-        } else {
-            mainSwiper.slidePrev();
-        }
-
-        setTimeout(() => {
-            isScrolling.current = false;
-        }, 700);
-    };
-
-    el.addEventListener("wheel", wheelHandler, { passive: false });
-
-    return () => {
-        el.removeEventListener("wheel", wheelHandler);
-    };
+        return () => {
+            el.removeEventListener("wheel", wheelHandler);
+        };
     }, [mainSwiper]);
 
     
@@ -99,7 +105,8 @@ const Projects = () => {
     
                     {/* 썸네일 */}
                     <Swiper
-                        modules={[Mousewheel]}
+                        initialSlide={0}
+                        modules={[Thumbs, Mousewheel]}
                         onSwiper={setThumbsSwiper}
                         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                         direction="vertical"
@@ -114,11 +121,17 @@ const Projects = () => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div className="scrollbox"></div>
+                    <div 
+                        className="scrollbox" 
+                        style={{ 
+                            transform: `translateY(${activeIndex * 600}%) rotate(${activeIndex * 720}deg)`
+                        }}
+                    ></div>
                 </div>
     
                 {/* 메인슬라이드이미지 */}
                 <Swiper
+                    initialSlide={0}
                     modules={[Thumbs, Mousewheel]}
                     onSwiper={setMainSwiper}
                     thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
