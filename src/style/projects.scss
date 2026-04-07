@@ -71,7 +71,7 @@
                     top: 43%;
                     right: 35%;
                     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-                    pointer-events: none; // 클릭 방해 방지
+                    pointer-events: none;
                     z-index: 10;
                     
                 }
