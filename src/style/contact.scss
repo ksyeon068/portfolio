@@ -1,5 +1,5 @@
 .contact{
-    padding: 200px 15% 150px;
+    padding: 200px 13% 150px;
     .reveal {
         position: relative;
         display: inline-block;
@@ -18,13 +18,12 @@
     .reveal h3 {
         position: relative;
         z-index: 1;
-    }
-    h3{
         color: #333;
-        font-size: 45px;
+        font-size: 52px;
+        padding: 0 10px;
     }
     ul{
-        padding-left: 50px;
+        padding-left: 80px;
         height: 400px;
         display: flex;
         flex-direction: column;

@@ -24,7 +24,7 @@ const Header = () => {
         }
     }
 
-    const menu = ["Home", "Profile", "Skills", "Projects", "Contact"]
+    const menu = ["Home", "Skills", "Projects", "Contact"]
 
     return (
         <header className={`header ${isScrolled ? 'on' : ''}`}>

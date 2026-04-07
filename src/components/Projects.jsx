@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs, Mousewheel } from "swiper/modules";
+import { motion, useAnimation, useInView   } from "framer-motion";
 
 import { FaGithub } from "react-icons/fa6";
 
@@ -42,6 +43,45 @@ const slides = [
 
 
 const Projects = () => {
+    //제목 모션//
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+    const boxControls = useAnimation();
+    const listControls = useAnimation();
+    const boxVariants = {
+        hidden: { x: "-100%" },
+        visible: {
+            x: "100%",
+            transition: {
+            duration: 1.5,
+            ease: "easeInOut",
+            },
+        },
+    };
+
+    const textVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+            delay: 0.8,
+            duration: 0.1,
+            },
+        },
+    };
+    useEffect(() => {
+        if (!isInView) return;
+
+        const sequence = async () => {
+            await new Promise(res => setTimeout(res, 400));
+            await boxControls.start("visible");
+            await listControls.start("visible");
+        };
+
+        sequence();
+    }, [isInView]);
+
+    //스와이퍼 제어//
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [mainSwiper, setMainSwiper] = useState(null);
     const containerRef = useRef(null);
@@ -90,67 +130,84 @@ const Projects = () => {
     
 
     return (
-        <div 
-            className='projects' 
-            ref={containerRef}
-            style={{ overscrollBehavior: "contain" }}
-        >
-                <div className="leftArea">
-                    {/* 텍스트 */}
-                    <div className="textBox">
-                        <h3 className="title">{slides[activeIndex]?.title}</h3>
-                        <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
-                        <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
+        <div className='projects_W' ref={ref}>
+            <div className="reveal">
+                <motion.div
+                    className="white-box"
+                    variants={boxVariants}
+                    initial="hidden"
+                    animate={boxControls}
+                />
+                <motion.h3
+                    variants={textVariants}
+                    initial="hidden"
+                    animate={boxControls}
+                >
+                    Projects
+                </motion.h3>
+            </div>
+            <div 
+                className='projects' 
+                ref={containerRef}
+                style={{ overscrollBehavior: "contain" }}
+            >
+                    <div className="leftArea">
+                        {/* 텍스트 */}
+                        <div className="textBox">
+                            <h3 className="title">{slides[activeIndex]?.title}</h3>
+                            <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
+                            <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
+                        </div>
+        
+                        {/* 썸네일 */}
+                        <Swiper
+                            initialSlide={0}
+                            modules={[Thumbs, Mousewheel]}
+                            onSwiper={setThumbsSwiper}
+                            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                            direction="vertical"
+                            slidesPerView={6}
+                            mousewheel={false}
+                            touchReleaseOnEdges={true}
+                            className="thumbsSwiper"
+                        >
+                            {slides.map((item, i) => (
+                                <SwiperSlide key={i}>
+                                <img src={item.img} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                        <div 
+                            className="scrollbox" 
+                            style={{ 
+                                transform: `translateY(${activeIndex * 600}%) rotate(${activeIndex * 720}deg)`
+                            }}
+                        ></div>
                     </div>
-    
-                    {/* 썸네일 */}
+        
+                    {/* 메인슬라이드이미지 */}
                     <Swiper
                         initialSlide={0}
                         modules={[Thumbs, Mousewheel]}
-                        onSwiper={setThumbsSwiper}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                        onSwiper={setMainSwiper}
+                        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                         direction="vertical"
-                        slidesPerView={6}
                         mousewheel={false}
+                        slidesPerView={1}
                         touchReleaseOnEdges={true}
-                        className="thumbsSwiper"
+                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                        className="mainSwiper"
                     >
                         {slides.map((item, i) => (
-                            <SwiperSlide key={i}>
+                        <SwiperSlide key={i}>
+                            <a href={item.siteLink} target="_blank">
                             <img src={item.img} />
-                            </SwiperSlide>
+                            </a>
+                        </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div 
-                        className="scrollbox" 
-                        style={{ 
-                            transform: `translateY(${activeIndex * 600}%) rotate(${activeIndex * 720}deg)`
-                        }}
-                    ></div>
-                </div>
-    
-                {/* 메인슬라이드이미지 */}
-                <Swiper
-                    initialSlide={0}
-                    modules={[Thumbs, Mousewheel]}
-                    onSwiper={setMainSwiper}
-                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                    direction="vertical"
-                    mousewheel={false}
-                    slidesPerView={1}
-                    touchReleaseOnEdges={true}
-                    onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                    className="mainSwiper"
-                >
-                    {slides.map((item, i) => (
-                    <SwiperSlide key={i}>
-                        <a href={item.siteLink} target="_blank">
-                        <img src={item.img} />
-                        </a>
-                    </SwiperSlide>
-                    ))}
-                </Swiper>
             </div>
+       </div>
     );
 };
 

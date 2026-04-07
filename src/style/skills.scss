@@ -1,43 +1,72 @@
 .skills{
-    padding: 200px 20%;
-    display: flex;
-    justify-content: space-between;
-    ul{
-        width: 40%;
-        li{
+    padding: 150px 13% 200px;
+    .reveal {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        align-self: flex-start;
+        .black-box {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            color: #333;
-            line-height: 160%;
-            margin-bottom: 15px;
-            h4{
-                position: relative;
-                border-bottom: 1px solid #b8b8b8;
-                padding: 5px 0;
-                transition: .5s;
-                margin-bottom: 5px;
-                &::before{
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    top: 13px; left: 0;
-                    width: 10px;
-                    height: 10px;
-                    background: #14a9ff;
-                    opacity: 0;
-                    transition: .5s;
-                }
-                &:hover{
-                    padding: 5px 18px;
-                    color: #14a9ff;
-                    &::before{
-                        opacity: 1;
-                        transform: rotate(180deg)
-                    }
-                }
-                
-                
-            }
-            span{font-size: 13px;}
+            height: 100%;
+            background: linear-gradient(to right, rgb(0, 0, 0) 90%, rgb(20, 169, 255) 10%);
+            z-index: 2;
         }
     }
+    h3{
+        font-size: 52px;
+        padding: 0 10px;
+    }
+    .skillsWrap{
+        margin-top: 80px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5%;
+        ul{
+            width: 40%;
+            li{
+                width: 100%;
+                color: #333;
+                line-height: 160%;
+                margin-bottom: 15px;
+                h4{
+                    position: relative;
+                    border-bottom: 1px solid #b8b8b8;
+                    padding: 5px 0;
+                    transition: .5s;
+                    margin-bottom: 5px;
+                    display:flex;
+                    align-items: center;
+                    font-size: 18px;
+                    .skillIcon{font-size: 30px; margin-left: 10px;}
+
+                    &::before{
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: 13px; left: 0;
+                        width: 10px;
+                        height: 10px;
+                        background: #14a9ff;
+                        opacity: 0;
+                        transition: .5s;
+                    }
+                    &:hover{
+                        padding: 5px 18px;
+                        color: #14a9ff;
+                        &::before{
+                            opacity: 1;
+                            transform: rotate(180deg)
+                        }
+                    }
+                    
+                    
+                }
+                span{font-size: 13px;}
+            }
+        }
+    }
+    
 }

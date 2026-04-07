@@ -39,14 +39,19 @@ const Contact = () => {
         visible: {
             opacity:1,
             transition: {
-            staggerChildren: 0.4,
+            staggerChildren: 0.5,
             },
         },
     };
 
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
+        visible: { opacity: 1, y: 0,
+             transition: {
+                duration: 0.6,
+                ease: [0.25, 1, 0.5, 1],   
+            },
+         },
     };
 
     useEffect(() => {
@@ -81,9 +86,7 @@ const Contact = () => {
             <motion.ul
                 variants={listVariants}
                 initial="hidden"
-                animate={listControls}/* 
-                whileInView="visible"
-                viewport={{ once: true }} */
+                animate={listControls}
             >
                 <motion.li variants={itemVariants}>
                     <a href="https://github.com/ksyeon068" target="_blank"><BsArrowRightSquareFill className='contactIcon' /> GitHub: https://github.com/ksyeon068 </a>
