@@ -25,6 +25,26 @@ const Hero = () => {
             },
         },
     };
+    const listVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity:1,
+            transition: {
+            staggerChildren: 0.3,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, 
+            transition: {
+                duration: 0.6,
+                ease: [0.25, 1, 0.5, 1],   
+            },
+        },
+        
+    };
 
     return (
         <main className='hero'>
@@ -62,17 +82,16 @@ const Hero = () => {
                         </motion.h3>
                     </div>
                 </div>
-                <div>
+                <div className='sub_text'>
                     <div className="profile-left">
-                        <span>김세연</span>
-                        <p>사용자 경험을 중심으로 디자인하고, 이를 코드로 구현하는 김세연입니다.</p>
-                        <br />
-                        <p>시각적인 완성도와 인터랙션의 흐름을 함께 고민하며, 디자인과 개발의 경계를 자연스럽게 연결합니다.</p>
+                        <motion.p variants={itemVariants}>사용자 경험을 중심으로 디자인하고, 이를 코드로 구현합니다.</motion.p>
+                        <motion.p variants={itemVariants}>디자인과 개발의 경계를 연결합니다.</motion.p>
                     </div>
-                    <div className="profile-right">
-                        <img src="./" alt="프로필용이미지" />
-                    </div>
+                    
                 </div>
+            </div>
+            <div className="profile-right">
+                <img src="./" alt="프로필용이미지" />
             </div>
             
         </main>
