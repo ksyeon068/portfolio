@@ -14,36 +14,91 @@
             background: linear-gradient(to right, rgb(0, 0, 0) 90%, rgb(20, 169, 255) 10%);
             z-index: 2;
         }
+        h3 {
+            position: relative;
+            z-index: 1;
+            color: #333;
+            font-size: 52px;
+            padding: 0 10px;
+        }
     }
-    .reveal h3 {
-        position: relative;
-        z-index: 1;
-        color: #333;
-        font-size: 52px;
-        padding: 0 10px;
-    }
-    ul{
-        padding-left: 80px;
-        height: 400px;
+    .contact_i{
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        li{
-            line-height: 300%;
-            
-            a{
-                color: #333;
-                font-size: 20px;
-                font-weight: 400;
-                text-decoration: none;
-                display: inline-flex;
-                align-items: center;
-                .contactIcon{
-                    font-size: 25px;
-                    margin-right: 10px;
+        padding-left: 80px;
+        justify-content: space-between;
+        align-items: center;
+        ul{
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            li{
+                line-height: 300%;
+                a{
+                    color: #333;
+                    font-size: 20px;
+                    font-weight: 400;
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    .contactIcon{
+                        font-size: 25px;
+                        margin-right: 10px;
+                    }
+                    transition: .5s;
+                    &::after{
+                        content: ">>>";
+                        margin-left: 8px;
+                        opacity: 0;
+                        transform: translateX(-10px);
+                        transition: 0.4s;
+                    }
+                    transition: 0.3s;
+                    &:hover {
+                        color: #0f8dd6;
+                        &::after {
+                            opacity: 1;
+                            transform: translateX(0); // 👉 스르륵 등장
+                        }
+                    }
+                    
+                }
+            }
+            li:last-child {
+                a::after {
+                    display: none;
                 }
             }
         }
-        
+        .contact_right{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            img{width: 450px;}
+            margin-right: 4%;
+            &::after{
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: 
+                    radial-gradient(#ffffff 1px, transparent 1px),
+                    linear-gradient(to top, #ffffff, transparent);
+                background-size: 
+                    4px 4px,
+                    100% 70%; 
+                background-repeat: 
+                    repeat,
+                    no-repeat;
+
+                background-position: 
+                    0 0,
+                    0 bottom;
+
+                opacity: .6;
+                pointer-events: none;
+            }
+        }
     }
+    
 }

@@ -16,7 +16,7 @@ import { LuFigma } from "react-icons/lu";
 
 const Skills = () => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(ref, { once: true, amount: 0.1});
     const boxControls = useAnimation();
     const listControls = useAnimation();
     const boxVariants = {
@@ -24,7 +24,7 @@ const Skills = () => {
         visible: {
             x: "100%",
             transition: {
-            duration: 1.5,
+            duration: 0.9,
             ease: "easeInOut",
             },
         },
@@ -35,7 +35,7 @@ const Skills = () => {
         visible: {
             opacity: 1,
             transition: {
-            delay: 0.8,
+            delay: 0.5,
             duration: 0.1,
             },
         },
@@ -45,7 +45,7 @@ const Skills = () => {
         visible: {
             opacity:1,
             transition: {
-            staggerChildren: 0.3,
+            staggerChildren: 0.1,
             },
         },
     };
@@ -65,7 +65,7 @@ const Skills = () => {
         if (!isInView) return;
 
         const sequence = async () => {
-            await new Promise(res => setTimeout(res, 400));
+            await new Promise(res => setTimeout(res, 100));
             await boxControls.start("visible");
             await listControls.start("visible");
         };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useAnimation, useInView   } from "framer-motion";
-import { useEffect, useRef  } from "react";
+import { useEffect, useRef } from "react";
 
 import { IoMdMail } from "react-icons/io";
 import { BsArrowRightSquareFill } from "react-icons/bs";
@@ -83,21 +83,31 @@ const Contact = () => {
                 </motion.h3>
             </div>
             
-            <motion.ul
-                variants={listVariants}
-                initial="hidden"
-                animate={listControls}
-            >
-                <motion.li variants={itemVariants}>
-                    <a href="https://github.com/ksyeon068" target="_blank"><BsArrowRightSquareFill className='contactIcon' /> GitHub: https://github.com/ksyeon068 </a>
-                </motion.li>
-                <motion.li variants={itemVariants}>
-                    <a href="mailto:ksyeon068@gmail.com"><IoMdMail className='contactIcon'/> Email: ksyeon068@gmail.com </a>
-                </motion.li>
-                <motion.li variants={itemVariants}>
-                    <a><FaSquarePhone className='contactIcon' /> Phone: 010-4132-7448</a>
-                </motion.li>
-            </motion.ul>
+            <div className='contact_i'>
+                <motion.ul
+                    variants={listVariants}
+                    initial="hidden"
+                    animate={listControls}
+                >
+                    <motion.li variants={itemVariants}>
+                        <a href="https://github.com/ksyeon068" target="_blank"><BsArrowRightSquareFill className='contactIcon' /> GitHub: https://github.com/ksyeon068 </a>
+                    </motion.li>
+                    <motion.li variants={itemVariants}>
+                        <a href="mailto:ksyeon068@gmail.com"><IoMdMail className='contactIcon'/> Email: ksyeon068@gmail.com </a>
+                    </motion.li>
+                    <motion.li variants={itemVariants}>
+                        <a><FaSquarePhone className='contactIcon' /> Phone: 010-4132-7448</a>
+                    </motion.li>
+                </motion.ul>
+                <motion.div className="contact_right"
+                    variants={listVariants}
+                    initial="hidden"
+                    animate={listControls}
+                >
+                    
+                    <motion.img src="/img/img1.jpg" alt="컨택트이미지"  variants={itemVariants}/>
+                </motion.div>
+            </div>
         </div>
     );
 };

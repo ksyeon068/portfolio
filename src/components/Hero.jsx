@@ -1,9 +1,12 @@
-import React from 'react';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useAnimation, useInView} from "framer-motion";
+import { useEffect, useRef } from "react";
 import '../style/hero.scss';
 
 const Hero = () => {
-
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+    const boxControls = useAnimation();
+    const listControls = useAnimation();
     const boxVariants = {
         hidden: { x: "-100%" },
         visible: {
@@ -26,11 +29,11 @@ const Hero = () => {
         },
     };
     const listVariants = {
-        hidden: { opacity: 0 },
+        hidden: {},
         visible: {
-            opacity:1,
             transition: {
-            staggerChildren: 0.3,
+                staggerChildren: 0.15,
+                delayChildren: 0.2,
             },
         },
     };
@@ -45,9 +48,19 @@ const Hero = () => {
         },
         
     };
+   useEffect(() => {
+        if (!isInView) return;
+
+        const sequence = async () => {
+            await boxControls.start("visible");
+            await listControls.start("visible");
+        };
+
+        sequence();
+    }, [isInView]);
 
     return (
-        <main className='hero'>
+        <main className='hero' ref={ref}>
             <div className="inner">
                 <div className='hero-text'>
                    <div className="reveal">
@@ -55,12 +68,12 @@ const Hero = () => {
                         className="white-box"
                         variants={boxVariants}
                         initial="hidden"
-                        animate="visible"
+                        animate={boxControls}
                         />
                         <motion.h2
                         variants={textVariants}
                         initial="hidden"
-                        animate="visible"
+                        animate={boxControls}
                         >
                         KIM SEYEON
                         </motion.h2>
@@ -71,28 +84,37 @@ const Hero = () => {
                         className="white-box"
                         variants={boxVariants}
                         initial="hidden"
-                        animate="visible"
+                        animate={boxControls}
                         />
                         <motion.h3
                         variants={textVariants}
                         initial="hidden"
-                        animate="visible"
+                        animate={boxControls}
                         >
                         PORTFOLIO
                         </motion.h3>
                     </div>
                 </div>
                 <div className='sub_text'>
-                    <div className="profile-left">
+                    <motion.div className="profile-left"
+                        variants={listVariants}
+                        initial="hidden"
+                        animate={listControls}
+                    >
                         <motion.p variants={itemVariants}>사용자 경험을 중심으로 디자인하고, 이를 코드로 구현합니다.</motion.p>
                         <motion.p variants={itemVariants}>디자인과 개발의 경계를 연결합니다.</motion.p>
-                    </div>
+                    </motion.div>
                     
                 </div>
             </div>
-            <div className="profile-right">
-                <img src="./" alt="프로필용이미지" />
-            </div>
+            <motion.div className="profile-right"
+                variants={listVariants}
+                initial="hidden"
+                animate={listControls}
+            >
+                
+                <motion.img src="/img/img2.jpg" alt="프로필용이미지"  variants={itemVariants}/>
+            </motion.div>
             
         </main>
     );

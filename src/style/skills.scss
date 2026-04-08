@@ -49,15 +49,16 @@
                         top: 13px; left: 0;
                         width: 10px;
                         height: 10px;
-                        background: #14a9ff;
+                        background: #0f8dd6;
                         opacity: 0;
                         transition: .5s;
                     }
                     &:hover{
                         padding: 5px 18px;
-                        color: #14a9ff;
+                        color: #0f8dd6;
                         &::before{
                             opacity: 1;
+                            margin-top: 3px;
                             transform: rotate(180deg)
                         }
                     }

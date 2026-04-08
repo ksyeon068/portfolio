@@ -53,7 +53,7 @@ const Projects = () => {
         visible: {
             x: "100%",
             transition: {
-            duration: 1.5,
+            duration: 1.0,
             ease: "easeInOut",
             },
         },
@@ -64,7 +64,7 @@ const Projects = () => {
         visible: {
             opacity: 1,
             transition: {
-            delay: 0.8,
+            delay: 0.6,
             duration: 0.1,
             },
         },
@@ -73,7 +73,7 @@ const Projects = () => {
         if (!isInView) return;
 
         const sequence = async () => {
-            await new Promise(res => setTimeout(res, 400));
+            await new Promise(res => setTimeout(res, 200));
             await boxControls.start("visible");
             await listControls.start("visible");
         };
