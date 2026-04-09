@@ -5,3 +5,22 @@ ul{list-style: none;}
     padding: 0 240px;
     height: 100vh;
 }
+
+@media screen and (max-width: 1440px){
+    .inner{
+        padding: 0 160px;
+        height: 100vh;
+    }
+}
+@media screen and (max-width: 1024px){
+    .inner{
+        padding: 0 80px;
+        height: 100vh;
+    }
+}
+@media screen and (max-width: 780px){
+    .inner{
+        padding: 0 50px;
+        height: 100vh;
+    }
+}

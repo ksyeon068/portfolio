@@ -41,8 +41,6 @@
             line-height: 180%;
             .profile-left{
                 color: #b6b6b6;
-                span{}
-                p{}
             }
         }    
     }
@@ -50,17 +48,16 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        margin-left: 100px;
         position: relative;
         img{
-            width: 65%;
+            width: 500px;
             
         }
-        &::after {
+        /* &::after {
             content: "";
             position: absolute;
             inset: 0;
-
-            /* 도트 패턴 */
             background-image: 
                 radial-gradient(#111 1px, transparent 1px),
                 linear-gradient(to top, #111, transparent);
@@ -77,6 +74,73 @@
 
             opacity: .6;
             pointer-events: none;
+        } */
+    }
+}
+
+@media screen and (max-width: 1440px){
+    .hero{
+        .inner{
+            .hero-text{
+                h2{font-size: 60px;}
+                h3{font-size: 48px;}
+            }
+            .sub_text{
+                .profile-left{
+                    p{font-size: 14px;}
+                }
+            }    
+        }
+        .profile-right{
+            margin-left: 80px;
+            img{
+                width: 450px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px){
+    .hero{
+        .inner{
+            .hero-text{
+                h2{font-size: 50px;}
+                h3{font-size: 35px;}
+            }
+            .sub_text{
+                .profile-left{
+                    p{font-size: 13px;}
+                }
+            }    
+        }
+        .profile-right{
+            margin-left: 0;
+            img{
+                width: 400px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 760px){
+    .hero{
+        flex-direction: column;
+        .inner{
+            align-items: center;
+            margin-top: 40px;
+            .hero-text{
+                h2{font-size: 50px;}
+                h3{font-size: 35px;}
+            }
+            .sub_text{
+                .profile-left{
+                    p{font-size: 11px;}
+                }
+            }    
+        }
+        .profile-right{
+            bottom: 150px;
+            img{
+                width: 250px;
+            }
         }
     }
 }
