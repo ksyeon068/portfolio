@@ -50,7 +50,7 @@
                         content: ">>>";
                         margin-left: 8px;
                         opacity: 0;
-                        transform: translateX(-10px);
+                        transform: translateX(-20px);
                         transition: 0.4s;
                     }
                     transition: 0.3s;
@@ -58,7 +58,7 @@
                         color: #0f8dd6;
                         &::after {
                             opacity: 1;
-                            transform: translateX(0); // 👉 스르륵 등장
+                            transform: translateX(0);
                         }
                     }
                     

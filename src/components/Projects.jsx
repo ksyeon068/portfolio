@@ -38,6 +38,13 @@ const slides = [
     subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details ",
     siteLink: "https://eclat-t.vercel.app/",
     gitLink: "https://github.com/seongeun040624/eclatT.git"
+  },
+  {
+    img: "/img/slider5.jpg",
+    title: "Portfolio",
+    subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details ",
+    siteLink: "https://eclat-t.vercel.app/",
+    gitLink: "https://github.com/seongeun040624/eclatT.git"
   }
 ];
 
@@ -180,7 +187,7 @@ const Projects = () => {
                         <div 
                             className="scrollbox" 
                             style={{ 
-                                transform: `translateY(${activeIndex * 600}%) rotate(${activeIndex * 720}deg)`
+                                transform: `translateY(${activeIndex * 100}%) translateY(${activeIndex * 85}px) rotate(${activeIndex * 90}deg)`
                             }}
                         ></div>
                     </div>

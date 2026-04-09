@@ -4,73 +4,61 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #007aff; // 초기 배경색 (파랑)
+  background: #007aff; 
   z-index: 9999;
   overflow: hidden;
-}
-
-/* 🔥 물 올라오는 레이어 (글자를 덮어야 함) */
-.wave {
-  position: absolute;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #111; // 덮을 색상 (검정)
-  z-index: 10; // 텍스트보다 높은 숫자로 설정
-  transition: bottom 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-/* 활성화되면 화면을 다 덮음 */
-.loading.active .wave {
-  bottom: 0;
-}
-
-/* 🔥 텍스트 */
-.loadingText {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 20%);
-  text-align: center;
-  color: #fff;
-  opacity: 0;
-  z-index: 5; // wave(10)보다 낮아서 wave가 올라오면 가려짐
-  transition: all 0.8s ease;
-
-  &.show {
-    opacity: 1;
-    transform: translate(-50%, -50%);
+  .wave {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111; 
+    z-index: 10;
+    transition: bottom 1.5s cubic-bezier(0.77, 0, 0.175, 1);
   }
+  &.active .wave {bottom: 0;}
 
-  h1 {
-    display: flex;
-    align-items: flex-end; // 글자와 점 하단 정렬
-    font-size: 60px;
-    letter-spacing: 5px;
-    margin: 0;
+  .loadingText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    z-index: 5; 
+    transition: all 0.8s ease;
 
-    /* 🔥 네모난 점 스타일 */
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: #fff;
-      margin-left: 8px;
-      margin-bottom: 12px; // 글자 높이에 맞춰 조정
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
+    &.show {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
 
-      // 각 점마다 딜레이를 주어 하나씩 나오게 함
-      &:nth-child(1) { transition-delay: 0.8s; }
-      &:nth-child(2) { transition-delay: 1.0s; }
-      &:nth-child(3) { transition-delay: 1.2s; }
+    h1 {
+      display: flex;
+      align-items: flex-end;
+      font-size: 60px;
+      letter-spacing: 5px;
+      margin: 0;
+      .dot {
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        margin-left: 8px;
+        margin-bottom: 12px; 
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+        &:nth-child(1) { transition-delay: 0.5s; }
+        &:nth-child(2) { transition-delay: 0.8s; }
+        &:nth-child(3) { transition-delay: 1.0s; }
+      }
+    }
+    &.show .dot {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-
-  /* 텍스트가 보일 때 점들도 순차적으로 등장 */
-  &.show .dot {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
+

@@ -53,15 +53,37 @@
                     color: #b6b6b6;
                     margin-bottom: 15px;
                 }
-                a{ color: #fff; text-decoration: none; font-size: 20px; transition: .3s;}
-                a:hover{color: #14a9ff;}
+                a{
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 20px;
+                    transition: .3s;
+                    &::after{
+                        content: ">>>";
+                        margin-left: 8px;
+                        opacity: 0;
+                        transform: translateX(-10px);
+                        transition: 0.4s;
+                    }
+                    transition: 0.3s;
+                    &:hover {
+                        color: #14a9ff;
+                        &::after {
+                            opacity: 1;
+                            transform: translateX(0);
+                        }
+                    }
+                }
             }
             .swiper{margin-left: 8%;}
             .thumbsSwiper {
                 cursor: pointer;
                 flex-grow: 1;
+                height: auto;
+                max-height: 700px;
                 .swiper-wrapper {
                     gap: 10px;
+                    height: 400px;
                     .swiper-slide{
                         position: relative;
                         display: flex;
@@ -88,6 +110,8 @@
                 }
             }
             .scrollbox{
+                top: 0;
+                margin-top: 7px;
                     width: 18px;
                     height: 18px;
                     background: #14a9ff;
