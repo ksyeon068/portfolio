@@ -65,7 +65,6 @@ const Projects = () => {
             },
         },
     };
-
     const textVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -84,7 +83,6 @@ const Projects = () => {
             await boxControls.start("visible");
             await listControls.start("visible");
         };
-
         sequence();
     }, [isInView]);
 
@@ -99,10 +97,8 @@ const Projects = () => {
     useEffect(() => {
         const el = containerRef.current;
         if (!el) return;
-
         const wheelHandler = (e) => {
             if (!mainSwiper) return;
-
             const isFirst = mainSwiper.activeIndex === 0;
             const isLast = mainSwiper.activeIndex === slides.length - 1;
 
@@ -111,30 +107,34 @@ const Projects = () => {
 
             if (isMovingNext || isMovingPrev) {
                 if (e.cancelable) e.preventDefault();
-
                 if (isScrolling.current) return;
-                
                 isScrolling.current = true;
-                if (e.deltaY > 0) {
-                    mainSwiper.slideNext();
-                } else {
-                    mainSwiper.slidePrev();
-                }
-
-                setTimeout(() => {
-                    isScrolling.current = false;
-                }, 500);
+                if (e.deltaY > 0) {mainSwiper.slideNext();}
+                else { mainSwiper.slidePrev();}
+                setTimeout(() => {isScrolling.current = false;}, 500);
             }
-            
         };
         el.addEventListener("wheel", wheelHandler, { passive: false });
-
         return () => {
             el.removeEventListener("wheel", wheelHandler);
         };
     }, [mainSwiper]);
 
-    
+    const thumbItemRef = useRef(null);
+    const [thumbHeight, setThumbHeight] = useState(0);
+
+    useEffect(() => {
+        const updateHeight = () => {
+            if (thumbItemRef.current) {
+            setThumbHeight(thumbItemRef.current.offsetHeight + 10);
+            }
+        };
+
+        updateHeight();
+        window.addEventListener("resize", updateHeight);
+
+        return () => window.removeEventListener("resize", updateHeight);
+    }, []);
 
     return (
         <div className='projects_W' ref={ref}>
@@ -158,61 +158,72 @@ const Projects = () => {
                 ref={containerRef}
                 style={{ overscrollBehavior: "contain" }}
             >
-                    <div className="leftArea">
-                        {/* 텍스트 */}
-                        <div className="textBox">
-                            <h3 className="title">{slides[activeIndex]?.title}</h3>
-                            <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
-                            <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
-                        </div>
-        
-                        {/* 썸네일 */}
-                        <Swiper
-                            initialSlide={0}
-                            modules={[Thumbs, Mousewheel]}
-                            onSwiper={setThumbsSwiper}
-                            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                            direction="vertical"
-                            slidesPerView={6}
-                            mousewheel={false}
-                            touchReleaseOnEdges={true}
-                            className="thumbsSwiper"
-                        >
-                            {slides.map((item, i) => (
-                                <SwiperSlide key={i}>
-                                <img src={item.img} />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                        <div 
-                            className="scrollbox" 
-                            style={{ 
-                                transform: `translateY(${activeIndex * 100}%) translateY(${activeIndex * 85}px) rotate(${activeIndex * 90}deg)`
-                            }}
-                        ></div>
+                <div className="textBox mobile">
+                    <h3 className="title">{slides[activeIndex]?.title}</h3>
+                    <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
+                    <a href={slides[activeIndex]?.gitLink} target="_blank">
+                    <FaGithub /> Git
+                    </a>
+                </div>
+                <div className="leftArea">
+                    {/* 텍스트 */}
+                    <div className="textBox pc">
+                        <h3 className="title">{slides[activeIndex]?.title}</h3>
+                        <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
+                        <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
                     </div>
-        
-                    {/* 메인슬라이드이미지 */}
+    
+                    {/* 썸네일 */}
                     <Swiper
                         initialSlide={0}
                         modules={[Thumbs, Mousewheel]}
-                        onSwiper={setMainSwiper}
-                        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                        direction="vertical"
-                        mousewheel={false}
-                        slidesPerView={1}
-                        touchReleaseOnEdges={true}
+                        onSwiper={setThumbsSwiper}
                         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                        className="mainSwiper"
+                        direction="vertical"
+                        slidesPerView={6}
+                        mousewheel={false}
+                        touchReleaseOnEdges={true}
+                        className="thumbsSwiper"
                     >
                         {slides.map((item, i) => (
-                        <SwiperSlide key={i}>
-                            <a href={item.siteLink} target="_blank">
-                            <img src={item.img} />
-                            </a>
-                        </SwiperSlide>
+                            <SwiperSlide key={i}>
+                                <img 
+                                src={item.img} 
+                                ref={i === 0 ? thumbItemRef : null}
+                                />
+                            </SwiperSlide>
                         ))}
                     </Swiper>
+                    <div 
+                        className="scrollbox" 
+                        style={{ 
+                            transform: `translateY(${activeIndex * thumbHeight}px) rotate(${activeIndex * 90}deg)`
+                        }}
+                    >
+                    </div>
+                </div>
+        
+                {/* 메인슬라이드이미지 */}
+                <Swiper
+                    initialSlide={0}
+                    modules={[Thumbs, Mousewheel]}
+                    onSwiper={setMainSwiper}
+                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                    direction="vertical"
+                    mousewheel={false}
+                    slidesPerView={1}
+                    touchReleaseOnEdges={true}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                    className="mainSwiper"
+                >
+                    {slides.map((item, i) => (
+                    <SwiperSlide key={i}>
+                        <a href={item.siteLink} target="_blank">
+                        <img src={item.img} />
+                        </a>
+                    </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
        </div>
     );

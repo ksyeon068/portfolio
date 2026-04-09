@@ -15,31 +15,78 @@
             background: linear-gradient(to right, rgb(255, 255, 255) 90%, rgb(20, 169, 255) 10%);
             z-index: 2;
         }
+        h3 {
+            position: relative;
+            z-index: 1;
+            font-size: 52px;
+            color: #fff;
+        }
     }
-    .reveal h3 {
-        position: relative;
-        z-index: 1;
-        font-size: 52px;
-        color: #fff;
-    }
-}
-.projects {
-    overflow: hidden;
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    gap: 40px;
-    
+    .projects {
+        overflow: hidden;
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        gap: 40px;
+        .textBox.mobile { display: none; }
+        .textBox.pc { display: block; }
         .leftArea {
             width: 30%;
             display: flex;
             flex-direction: column;
             height: 100%;
             position: relative;
-            .textBox {
+            
+            .swiper{margin-left: 8%;}
+            .thumbsSwiper {
+                cursor: pointer;
+                flex-grow: 1;
+                height: auto;
+                max-height: 700px;
+                .swiper-wrapper {
+                    gap: 10px;
+                    height: 400px;
+                    .swiper-slide{
+                        position: relative;
+                        display: flex;
+                        width: 100%;
+                        height: 100px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            inset: 0;
+                            background: rgba(0,0,0,0.5);
+                            transition: 0.3s;
+                        }
+                    }
+                    .swiper-slide-thumb-active {
+                        &::after {background: rgba(0, 0, 0, 0)}
+                    }
+                }
+            }
+            .scrollbox{
+                top: 0;
+                margin-top: 7px;
+                width: 18px;
+                height: 18px;
+                background: #14a9ff;
+                position: absolute;
+                top: 38%;
+                right: 45%;
+                transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+                pointer-events: none;
+                z-index: 10;
+            }
+        }
+        .textBox {
                 flex-grow: 1;
                 margin: 80px 0 20px 8%;
-                height: 100px;
+                height: 0;
                 .title {
                     font-size: 28px;
                     font-weight: 600;
@@ -75,63 +122,13 @@
                     }
                 }
             }
-            .swiper{margin-left: 8%;}
-            .thumbsSwiper {
-                cursor: pointer;
-                flex-grow: 1;
-                height: auto;
-                max-height: 700px;
-                .swiper-wrapper {
-                    gap: 10px;
-                    height: 400px;
-                    .swiper-slide{
-                        position: relative;
-                        display: flex;
-                        width: 100%;
-                        height: 100px;
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                        }
-                        &::after {
-                            content: '';
-                            position: absolute;
-                            inset: 0;
-                            background: rgba(0,0,0,0.5);
-                            transition: 0.3s;
-                        }
-                    }
-                    .swiper-slide-thumb-active {
-                        &::after {
-                            background: rgba(0, 0, 0, 0) // 어두운거 제거
-                        }
-                    }
-                }
-            }
-            .scrollbox{
-                top: 0;
-                margin-top: 7px;
-                    width: 18px;
-                    height: 18px;
-                    background: #14a9ff;
-                    position: absolute;
-                    top: 43%;
-                    right: 45%;
-                    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-                    pointer-events: none;
-                    z-index: 10;
-                    
-                }
-        }
-
-    .mainSwiper{
-        width: 70%;
-        height: 80%;
-        flex: none;
-        position: relative;
-        top: 10%;
-        .swiper-wrapper {
+        .mainSwiper{
+            width: 70%;
+            height: 80%;
+            flex: none;
+            position: relative;
+            top: 10%;
+            .swiper-wrapper {
                 .swiper-slide{
                     width: 100%;
                     display: flex;
@@ -151,11 +148,143 @@
                         object-fit: cover;
                         transition: transform 0.5s;
                     }
-                    
                 }
-                &:hover img {
-                    transform: scale(1.05); 
+                &:hover img {transform: scale(1.05);}
+            }
+        }
+    }
+
+}
+@media screen and (max-width: 1440px){
+    .projects_W{
+        padding: 100px 0 100px 10%;
+        .reveal {
+            h3 {font-size: 50px;}
+        }
+        .projects {
+                .leftArea {
+                    width: 40%;
+                    
+                    .textBox {
+                        margin: 50px 0 0 5%;
+                        height: 0px;
+                        .title {
+                            font-size: 24px;
+                            margin-bottom: 15px;
+                        }
+                        .subtitle {font-size: 15px;}
+                    }
+                    .swiper{margin-left: 8%;}
+                    .thumbsSwiper {
+                        .swiper-wrapper {
+                            gap: 10px;
+                            height: 300px;
+                        }
+                    }
+                    .scrollbox{
+                        top: 41%;
+                        right: 32%;
+                    }
+                }
+            .mainSwiper{top: 14%;}
+        }
+
+    }
+}
+@media screen and (max-width: 1024px){
+    .projects_W{
+        padding: 80px 0 100px 8%;
+        .reveal {
+            h3 {font-size: 45px;}
+        }
+        .projects {
+            gap: 40px;
+            height: 60vh;
+            .leftArea {
+                .textBox {
+                    flex-grow: 1;
+                    margin: 40px 0 0 0;
+                    .title {
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }
+                    .subtitle {font-size: 13px;}
+                    a{font-size: 15px;}
+                }
+                .swiper{margin-left: 0;}
+                .thumbsSwiper {
+                    max-height: 500px;
+                    .swiper-wrapper {
+                        gap: 10px;
+                        height: 150px;
+                    }
+                }
+                .scrollbox{
+                    width: 12px;
+                    height: 12px;
+                    top: 43%;
+                    right: 35%;
                 }
             }
+            .mainSwiper{
+                top: 22%;
+                width: 75%;
+                height: 75%;
+            }
+        }
+
+    }
+}
+@media screen and (max-width: 760PX){
+    .projects_W{
+        padding: 80px 0 100px 8%;
+        .reveal {
+            h3 {font-size: 45px;}
+        }
+        .projects {
+            gap: 40px;
+            height: 60vh;
+            flex-direction: column;
+            .textBox.mobile {
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .textBox.pc {display: none;}
+            .leftArea {
+                width: 100%;
+                .swiper{margin-left: 0;}
+                .thumbsSwiper {
+                    max-height: 500px;
+                    .swiper-wrapper {
+                        gap: 10px;
+                        height: 150px;
+                    }
+                }
+                .scrollbox{
+                    width: 12px;
+                    height: 12px;
+                    top: 43%;
+                    right: 35%;
+                }
+            }
+            .textBox {
+                margin: 30px 0;
+                order: -1;
+                padding: 0 20px;
+                .title {
+                    font-size: 26px;
+                    margin-bottom: 10px;
+                }
+                .subtitle {font-size: 14px; }
+                a{font-size: 15px;}
+            }
+            .mainSwiper{
+                top: 22%;
+                width: 75%;
+                height: 75%;
+            }
+        }
+
     }
 }
