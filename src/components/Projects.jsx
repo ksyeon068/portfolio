@@ -135,8 +135,23 @@ const Projects = () => {
 
         return () => window.removeEventListener("resize", updateHeight);
     }, []);
+    const slideRefs = useRef([]);
+        useEffect(() => {
+    const updateHeight = () => {
+        const el = slideRefs.current[0];
+        if (!el) return;
 
+        const gap = 10; // swiper gap
+        setThumbHeight(el.offsetHeight + gap);
+    };
+
+    setTimeout(updateHeight, 100); 
+    window.addEventListener("resize", updateHeight);
+
+    return () => window.removeEventListener("resize", updateHeight);
+    }, []);
     return (
+        <>
         <div className='projects_W' ref={ref}>
             <div className="reveal">
                 <motion.div
@@ -158,74 +173,114 @@ const Projects = () => {
                 ref={containerRef}
                 style={{ overscrollBehavior: "contain" }}
             >
-                <div className="textBox mobile">
-                    <h3 className="title">{slides[activeIndex]?.title}</h3>
-                    <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
-                    <a href={slides[activeIndex]?.gitLink} target="_blank">
-                    <FaGithub /> Git
-                    </a>
-                </div>
-                <div className="leftArea">
-                    {/* 텍스트 */}
-                    <div className="textBox pc">
-                        <h3 className="title">{slides[activeIndex]?.title}</h3>
-                        <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
-                        <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
+                <div className='contentRow'>
+                    <div className="leftArea">
+                        {/* 텍스트 */}
+                        <div className="textBox">
+                            <h3 className="title">{slides[activeIndex]?.title}</h3>
+                            <p className="subtitle">{slides[activeIndex]?.subtitle}</p>
+                            <a href={slides[activeIndex]?.gitLink} target="_blank"><FaGithub /> Git</a>
+                        </div>
+        
+                        {/* 썸네일 */}
+                        <Swiper
+                            initialSlide={0}
+                            modules={[Thumbs, Mousewheel]}
+                            onSwiper={setThumbsSwiper}
+                            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                            direction="vertical"
+                            slidesPerView={6}
+                            mousewheel={false}
+                            touchReleaseOnEdges={true}
+                            className="thumbsSwiper"
+                        >
+                            {slides.map((item, i) => (
+                                <SwiperSlide key={i}>
+                                    <div ref={(el) => (slideRefs.current[i] = el)}>
+                                        <img src={item.img} />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                        <div 
+                            className="scrollbox" 
+                            style={{ 
+                                transform: `translateY(${activeIndex * thumbHeight}px) rotate(${activeIndex * 90}deg)`
+                            }}
+                        >
+                        </div>
                     </div>
-    
-                    {/* 썸네일 */}
+            
+                    {/* 메인슬라이드이미지 */}
                     <Swiper
                         initialSlide={0}
                         modules={[Thumbs, Mousewheel]}
-                        onSwiper={setThumbsSwiper}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                        onSwiper={setMainSwiper}
+                        thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                         direction="vertical"
-                        slidesPerView={6}
                         mousewheel={false}
+                        slidesPerView={1}
                         touchReleaseOnEdges={true}
-                        className="thumbsSwiper"
+                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                        className="mainSwiper"
                     >
                         {slides.map((item, i) => (
-                            <SwiperSlide key={i}>
-                                <img 
-                                src={item.img} 
-                                ref={i === 0 ? thumbItemRef : null}
-                                />
-                            </SwiperSlide>
+                        <SwiperSlide key={i}>
+                            <a href={item.siteLink} target="_blank">
+                            <img src={item.img} />
+                            </a>
+                        </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div 
-                        className="scrollbox" 
-                        style={{ 
-                            transform: `translateY(${activeIndex * thumbHeight}px) rotate(${activeIndex * 90}deg)`
-                        }}
-                    >
-                    </div>
                 </div>
-        
-                {/* 메인슬라이드이미지 */}
-                <Swiper
-                    initialSlide={0}
-                    modules={[Thumbs, Mousewheel]}
-                    onSwiper={setMainSwiper}
-                    thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
-                    direction="vertical"
-                    mousewheel={false}
-                    slidesPerView={1}
-                    touchReleaseOnEdges={true}
-                    onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                    className="mainSwiper"
-                >
-                    {slides.map((item, i) => (
-                    <SwiperSlide key={i}>
-                        <a href={item.siteLink} target="_blank">
-                        <img src={item.img} />
-                        </a>
-                    </SwiperSlide>
-                    ))}
-                </Swiper>
             </div>
-       </div>
+        </div>
+        <div className="mo">
+             <div className="reveal">
+                <motion.div
+                    className="white-box"
+                    variants={boxVariants}
+                    initial="hidden"
+                    animate={boxControls}
+                />
+                <motion.h3
+                    variants={textVariants}
+                    initial="hidden"
+                    animate={boxControls}
+                >
+                    Projects
+                </motion.h3>
+            </div>
+            <div className="projectsList">
+                {slides.map((item, i) => (
+                    <div className="projectItem" key={i}>
+                        <a href={item.siteLink} target="_blank" rel="noopener noreferrer">
+                            <img src={item.img} alt={item.title} />
+                        </a>
+                        <div className="textBox_m">
+                            <div className='t_g'>
+                                <h3>{item.title}</h3>
+                                <a href={item.gitLink}
+                                target="_blank" rel="noopener noreferrer">
+                                <FaGithub />GitHub
+                                </a>
+                            </div>
+                            <p>
+                            {item.subtitle.split("\n").map((line, idx) => (
+                                <span key={idx}>
+                                    {line}
+                                    <br />
+                                </span>
+                            ))}
+                            </p>
+                            
+                        </div>
+
+                    </div>
+                ))}
+            </div>
+        </div>
+        </>
     );
 };
 
