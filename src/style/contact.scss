@@ -102,3 +102,109 @@
     }
     
 }
+@media screen and (max-width: 1440px){
+    .contact{
+        padding: 200px 10% 150px;
+        .reveal {
+            h3 {
+                font-size: 45px;
+            }
+        }
+        .contact_i{
+            padding-left: 60px;
+            .contact_right{
+                img{width: 400px;}
+                margin-right: 4%;
+            }
+        }
+        
+    }
+}
+@media screen and (max-width: 1024px){
+    .contact{
+        padding: 100px 8% 150px;
+        .contact_i{
+            padding-left: 60px;
+            ul{
+                height: 400px;
+                li{
+                    line-height: 300%;
+                    a{
+                        font-size: 18px;
+                        .contactIcon{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .contact_right{
+                img{width: 300px;}
+                margin-right: 4%;
+            }
+        }
+        
+    }
+}
+@media screen and (max-width: 760px){
+    .contact{
+        padding: 100px 8% 150px;
+        .contact_i{
+            padding-left: 60px;
+            display: flex;
+            flex-direction: column;
+            ul{
+                height: 300px;
+                li{
+                    line-height: 300%;
+                    a{
+                        font-size: 18px;
+                        .contactIcon{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .contact_right{
+                img{width: 200px;}
+                margin-right: 4%;
+            }
+        }
+        
+    }
+}
+@media screen and (max-width: 500px){
+    .contact{
+        padding: 100px 8% 150px;
+        .reveal {
+            h3 {
+                position: relative;
+                z-index: 1;
+                color: #333;
+                font-size: 35px;
+                padding: 0 10px;
+            }
+        }
+        .contact_i{
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            ul{
+                height: 250px;
+                li{
+                    line-height: 300%;
+                    a{
+                        font-size: 14px;
+                        .contactIcon{
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+            .contact_right{
+                img{width: 200px;}
+                margin-right: 4%;
+            }
+        }
+        
+    }
+}
