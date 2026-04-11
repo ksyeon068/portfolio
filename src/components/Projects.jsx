@@ -14,14 +14,14 @@ const slides = [
   {
     img: "/img/slider1.jpg",
     title: "관악구청 클론코딩",
-    subtitle: "html / css / swiper / API / JavaScript \n 메인페이지만 제작 \n 개인100%",
+    subtitle: "html / css / swiper / API / JavaScript \n 메인페이지만 제작 \n 개인",
     siteLink: "https://ksyeon068.github.io/Gwanak-gu_clone/",
     gitLink: "https://github.com/ksyeon068/Gwanak-gu_clone"
   },
   {
     img: "/img/slider2.jpg",
     title: "관악성모이비인후과 클론코딩",
-    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작 \n 개인100%",
+    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작 \n 개인",
     siteLink: "https://ksyeon068.github.io/Gwanak-S-ENT/",
     gitLink: "https://github.com/ksyeon068/Gwanak-S-ENT"
   },
@@ -35,14 +35,14 @@ const slides = [
   {
     img: "/img/slider4.jpg",
     title: "ECLAT",
-    subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details ",
+    subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details / 반응형,로그인페이지 연동예정",
     siteLink: "https://eclat-t.vercel.app/",
     gitLink: "https://github.com/seongeun040624/eclatT.git"
   },
   {
     img: "/img/slider5.jpg",
     title: "Portfolio",
-    subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details ",
+    subtitle: "react / scss / swiper \n 반응형으로 제작 / Vercel배포 \n 개인 / 디테일 수정예정",
     siteLink: "https://eclat-t.vercel.app/",
     gitLink: "https://github.com/seongeun040624/eclatT.git"
   }
