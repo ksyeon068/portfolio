@@ -1,6 +1,6 @@
 import '../style/Skills.scss';
 import { motion, useAnimation, useInView   } from "framer-motion";
-import { useEffect, useRef  } from "react";
+import React, { useEffect, useRef  } from "react";
 
 import { TbBrandHtml5 } from "react-icons/tb";
 import { TbBrandCss3 } from "react-icons/tb";
@@ -13,12 +13,12 @@ import { BiLogoAdobe } from "react-icons/bi";
 import { TbBrandAdobePremier } from "react-icons/tb";
 import { TbBrandAdobeAfterEffect } from "react-icons/tb";
 import { LuFigma } from "react-icons/lu";
-import { OpenAI } from '@lobehub/icons';
+/* import { OpenAI } from '@lobehub/icons';
 import { Gemini } from '@lobehub/icons';
 import { Grok } from '@lobehub/icons';
 import { Sora } from '@lobehub/icons';
 import { Google } from '@lobehub/icons';
-import { Cursor } from '@lobehub/icons';
+import { Cursor } from '@lobehub/icons'; */
 
 const Skills = () => {
     const ref = useRef(null);
@@ -169,27 +169,27 @@ const Skills = () => {
                     >
                         <div className='ul_li_text'>
                             <motion.li variants={itemVariants}>
-                                <h4>ChatGPT <OpenAI className='skillIcon'/></h4>
+                                <h4>ChatGPT {/* np */}</h4>
                                 <span>이미지생성, 코드생성&수정 효율적인 프롬프트 작성 가능 </span>
                             </motion.li>
                             <motion.li variants={itemVariants}>
-                                <h4>Gemini <Gemini className='skillIcon'/></h4>
+                                <h4>Gemini {/* <Gemini className='skillIcon'/> */}</h4>
                                 <span>이미지생성, 코드생성&수정 효율적인 프롬프트 작성 가능</span>
                             </motion.li>
                             <motion.li variants={itemVariants}>
-                                <h4>flow <Google className='skillIcon'/></h4>
+                                <h4>flow {/* <Google className='skillIcon'/> */}</h4>
                                 <span>Google Labs 이미지 생성 활용 경험</span>
                             </motion.li>
                             <motion.li variants={itemVariants}>
-                                <h4>Sora <Sora className='skillIcon'/></h4>
+                                <h4>Sora {/* <Sora className='skillIcon'/> */}</h4>
                                 <span>영상 생성 경험</span>
                             </motion.li>
                             <motion.li variants={itemVariants}>
-                                <h4>Grok <Grok className='skillIcon'/></h4>
+                                <h4>Grok {/* <Grok className='skillIcon'/> */}</h4>
                                 <span>이미지, 음성 생성 경험</span>
                             </motion.li>
                             <motion.li variants={itemVariants}>
-                                <h4>Cursor<Cursor className='skillIcon'/></h4>
+                                <h4>Cursor{/* <Cursor className='skillIcon'/> */}</h4>
                                 <span>바이브코딩 사용경험</span>
                             </motion.li>
                         </div>

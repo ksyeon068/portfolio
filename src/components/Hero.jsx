@@ -1,5 +1,5 @@
 import { motion, useAnimation, useInView} from "framer-motion";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import '../style/hero.scss';
 
 const Hero = () => {
