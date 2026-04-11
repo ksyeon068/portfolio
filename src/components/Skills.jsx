@@ -1,4 +1,4 @@
-import '../style/Skills.scss';
+import '../style/skills.scss';
 import { motion, useAnimation, useInView   } from "framer-motion";
 import React, { useEffect, useRef  } from "react";
 
