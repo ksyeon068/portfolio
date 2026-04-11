@@ -11,7 +11,7 @@ const Loading = ({ onFinish }) => {
     setTimeout(() => setShowText(true), 50);
 
     setTimeout(() => {
-      onFinish();
+      onFinish?.();
     }, 2200);
   }, [onFinish]);
 
