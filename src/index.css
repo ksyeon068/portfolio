@@ -24,3 +24,9 @@ ul{list-style: none;}
         height: 100vh;
     }
 }
+@media screen and (max-width: 420px){
+    .inner{
+        padding: 0 20px;
+        height: 100vh;
+    }
+}

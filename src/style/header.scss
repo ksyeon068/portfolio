@@ -50,3 +50,21 @@
         }
     }
 }
+@media screen and (max-width: 420px){
+    .header{
+        height: 50px;
+        .inner{
+            height: 50px;
+            h1{color: #fff; font-size: 20px;}
+            ul{
+                display: flex;
+                gap: 20px;
+                li{
+                    font-size: 15px;
+                    cursor: pointer;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
