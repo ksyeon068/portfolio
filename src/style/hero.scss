@@ -54,7 +54,7 @@
             width: 500px;
             
         }
-        /* &::after {
+        &::after {
             content: "";
             position: absolute;
             inset: 0;
@@ -74,7 +74,7 @@
 
             opacity: .6;
             pointer-events: none;
-        } */
+        }
     }
 }
 
@@ -138,6 +138,29 @@
         }
         .profile-right{
             bottom: 150px;
+            img{
+                width: 250px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 420px){
+    .hero{
+        .inner{
+            .hero-text{
+                h2{font-size: 45px;}
+                h3{font-size: 30px;}
+            }
+            .sub_text{
+                margin-top: 8px;
+                line-height: 120%;
+                .profile-left{
+                    p{font-size: 11px;}
+                }
+            }    
+        }
+        .profile-right{
+            bottom: 50px;
             img{
                 width: 250px;
             }
