@@ -172,7 +172,7 @@
         
     }
 }
-@media screen and (max-width: 500px){
+@media screen and (max-width: 560px){
     .contact{
         padding: 100px 8% 150px;
         .reveal {
@@ -203,6 +203,26 @@
             .contact_right{
                 img{width: 200px;}
                 margin-right: 4%;
+            }
+        }
+        
+    }
+}
+@media screen and (max-width: 420px){
+    .contact{
+        padding: 80px 8% 100px;
+        .contact_i{
+            ul{
+                height: 200px;
+                li{
+                    line-height: 200%;
+                    a{
+                        font-size: 12px;
+                        .contactIcon{
+                            font-size: 15px;
+                        }
+                    }
+                }
             }
         }
         
