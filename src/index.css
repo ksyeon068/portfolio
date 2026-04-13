@@ -18,15 +18,15 @@ ul{list-style: none;}
         height: 100vh;
     }
 }
-@media screen and (max-width: 780px){
+@media screen and (max-width: 760px){
     .inner{
         padding: 0 50px;
-        height: 100vh;
+        /* height: 100vh; */
     }
 }
 @media screen and (max-width: 420px){
     .inner{
         padding: 0 20px;
-        height: 100vh;
+        /* height: 100vh; */
     }
 }

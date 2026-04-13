@@ -303,8 +303,20 @@
 }
 @media screen and (max-width: 760PX){
     .projects_W{ display: none;}
-    .mo{display: block;}
-    .reveal{
-        font-size: 45px;
+    .mo{
+        display: block;
+        .reveal{
+            font-size: 45px;
+        }
     }
+    
+}
+@media screen and (max-width: 420PX){
+    .mo{
+        display: block;
+        .reveal{
+            font-size: 45px;
+        }
+    }
+    
 }

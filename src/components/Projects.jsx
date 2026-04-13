@@ -51,8 +51,10 @@ const slides = [
 
 const Projects = () => {
     //제목 모션//
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
+    const refPc = useRef(null);
+    const refMo = useRef(null);
+    const isInViewPc = useInView(refPc, { once: true });
+    const isInViewMo = useInView(refMo, { once: true });
     const boxControls = useAnimation();
     const listControls = useAnimation();
     const boxVariants = {
@@ -76,15 +78,16 @@ const Projects = () => {
         },
     };
     useEffect(() => {
-        if (!isInView) return;
+        if (!isInViewPc && !isInViewMo) return;
 
         const sequence = async () => {
             await new Promise(res => setTimeout(res, 200));
             await boxControls.start("visible");
             await listControls.start("visible");
         };
+
         sequence();
-    }, [isInView]);
+    }, [isInViewPc, isInViewMo]);
 
     //스와이퍼 제어//
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -136,7 +139,8 @@ const Projects = () => {
         return () => window.removeEventListener("resize", updateHeight);
     }, []);
     const slideRefs = useRef([]);
-        useEffect(() => {
+
+    useEffect(() => {
     const updateHeight = () => {
         const el = slideRefs.current[0];
         if (!el) return;
@@ -152,7 +156,7 @@ const Projects = () => {
     }, []);
     return (
         <>
-        <div className='projects_W' ref={ref}>
+        <div className='projects_W' ref={refPc}>
             <div className="reveal">
                 <motion.div
                     className="white-box"
@@ -235,7 +239,7 @@ const Projects = () => {
                 </div>
             </div>
         </div>
-        <div className="mo">
+        <div className="mo" ref={refMo}>
              <div className="reveal">
                 <motion.div
                     className="white-box"
