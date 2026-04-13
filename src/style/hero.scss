@@ -1,6 +1,6 @@
 .hero{
     width: 100%;
-    height: 100vh;
+    height: 900px;
     background: #111;
     display: flex;
     .inner{
@@ -37,6 +37,7 @@
             h3{font-size: 52px;}
         }
         .sub_text{
+            padding: 0 10px;
             margin-top: 20px;
             line-height: 180%;
             .profile-left{
@@ -107,6 +108,7 @@
                 h3{font-size: 35px;}
             }
             .sub_text{
+                
                 .profile-left{
                     p{font-size: 13px;}
                 }
@@ -116,6 +118,27 @@
             margin-left: 0;
             img{
                 width: 400px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 920px){
+    .hero{
+        .inner{
+            .hero-text{
+                h2{font-size: 45px;}
+                h3{font-size: 30px;}
+            }
+            .sub_text{
+                .profile-left{
+                    p{font-size: 13px;}
+                }
+            }    
+        }
+        .profile-right{
+            margin-left: 0;
+            img{
+                width: 320px;
             }
         }
     }
@@ -146,7 +169,9 @@
 }
 @media screen and (max-width: 560px){
     .hero{
+        height: 800px;
         .inner{
+            height: 450px;
             margin-top: 0px;
             .hero-text{
                 h2{font-size: 45px;}
@@ -161,7 +186,7 @@
             }    
         }
         .profile-right{
-            bottom: 50px;
+            bottom: 80px;
             img{
                 width: 220px;
             }
@@ -172,14 +197,14 @@
     .hero{
         .inner{
             .hero-text{
-                h2{font-size: 45px;}
-                h3{font-size: 30px;}
+                h2{font-size: 40px;}
+                h3{font-size: 28px;}
             }
             .sub_text{
                 margin-top: 8px;
                 line-height: 120%;
                 .profile-left{
-                    p{font-size: 11px;}
+                    p{font-size: 10px;}
                 }
             }    
         }
