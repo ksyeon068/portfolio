@@ -62,3 +62,21 @@
   }
 }
 
+@media screen and (max-width: 720px){
+    .loading {
+        .loadingText {
+            h1 {
+                font-size: 45px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 420px){
+    .loading {
+        .loadingText {
+            h1 {
+                font-size: 30px;
+            }
+        }
+    }
+}
