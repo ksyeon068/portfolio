@@ -13,12 +13,6 @@ import { BiLogoAdobe } from "react-icons/bi";
 import { TbBrandAdobePremier } from "react-icons/tb";
 import { TbBrandAdobeAfterEffect } from "react-icons/tb";
 import { LuFigma } from "react-icons/lu";
-/* import { OpenAI } from '@lobehub/icons';
-import { Gemini } from '@lobehub/icons';
-import { Grok } from '@lobehub/icons';
-import { Sora } from '@lobehub/icons';
-import { Google } from '@lobehub/icons';
-import { Cursor } from '@lobehub/icons'; */
 
 const Skills = () => {
     const ref = useRef(null);
@@ -125,7 +119,7 @@ const Skills = () => {
                                 <span>컴퍼넌트, API를 엑시오스 활용하여 사용가능.<br />AI를 활용하여 더욱 폭 넓게 사용가능.</span>
                             </motion.li>
                         </div>
-                        <motion.img src="/img/img3.jpg" alt="여백줄이기용" className='mo_img' variants={itemVariants}/>
+                        {/* <motion.img src="/img/img3.jpg" alt="여백줄이기용" className='mo_img' variants={itemVariants}/> */}
                     </motion.ul>
                     <motion.ul
                         className='design'
@@ -159,7 +153,7 @@ const Skills = () => {
                                 <span>와이어프레임 제작 가능. 디자인 협업경험.</span>
                             </motion.li>
                         </div>
-                        <motion.img src="/img/img4.jpg" alt="여백줄이기용" className='mo_img' variants={itemVariants}/>
+                        {/* <motion.img src="/img/img4.jpg" alt="여백줄이기용" className='mo_img' variants={itemVariants}/> */}
                     </motion.ul>
                     <motion.ul
                         className='ai'
@@ -193,7 +187,7 @@ const Skills = () => {
                                 <span>바이브코딩 사용경험</span>
                             </motion.li>
                         </div>
-                        <motion.img src="/img/img5.jpg" alt="여백줄이기용" className='mo_img' variants={itemVariants}/>
+                        {/* <motion.img src="/img/img5.jpg" alt="여백줄이기용" className='mo_img' variants={itemVariants}/> */}
                     </motion.ul>
             </div>
         </div>
