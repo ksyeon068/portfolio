@@ -6,7 +6,6 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
-            // 80px(헤더 높이) 이상 스크롤되면 true, 아니면 false
             if (window.scrollY > 80) {
                 setIsScrolled(true);
             } else {
