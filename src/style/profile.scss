@@ -1,5 +1,6 @@
 @use './variables' as *;
 .profile{
+    height: 100vh;
     padding: 80px 13%;
     .reveal {
         position: relative;
@@ -27,36 +28,38 @@
         margin-top: 80px;
         display: flex;
         padding: 0 5%;
-        gap: 20%;
+        gap: 25%;
         .left-img{
-            img{width: 350px;}
+            img{width: 400px;}
         }
         .introduce{
             color: #333;
             .i-top{
-                margin-bottom: 15px;
+                margin-bottom: 50px;
                 .name{
                     font-size: 18px;
-                    margin-bottom: 10px;
+                    margin-bottom: 20px;
                     span{font-weight: 600;}
 
                 }
                 .i-text{
-                    font-size: 14px;
+                    font-size: 15px;
                     line-height: 180%;
                 }
             }
             ul{
                 li{
                     display: flex;
-                    margin-bottom: 20px;
+                    margin-bottom: 25px;
+                    border-bottom: 1px solid $sub-Tcolor;
+                    &:last-child{border: none;}
                     .ti{
                         font-size: 16px;
                         font-weight: 500;
                         margin-right: 30px;
                     }
                     ul{
-                        margin-bottom: 10px;
+                        margin-bottom: 15px;
                         li{
                             border-bottom:none;
                             display: flex;

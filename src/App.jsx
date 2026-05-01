@@ -30,8 +30,8 @@ function App() {
       <Header />
       <section id='Home'><Hero/></section>
       <section id='About'><Profile/></section>
-      <section id='Skills'><Skills/></section>
       <section id='Projects'><Projects/></section>
+      <section id='Skills'><Skills/></section>
       <section id='Contact'><Contact/></section>
       <Footer/>
     </div>
