@@ -12,6 +12,12 @@ ul{list-style: none;}
         height: 100vh;
     }
 }
+@media screen and (max-width: 1280px){
+    .inner{
+        padding: 0 100px;
+        height: 100vh;
+    }
+}
 @media screen and (max-width: 1024px){
     .inner{
         padding: 0 80px;

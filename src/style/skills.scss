@@ -1,7 +1,7 @@
 @use './variables' as *;
 
 .skills{
-    padding: 150px 13% 200px;
+    padding: 80px 13%;
     .reveal{
         position: relative;
         display: inline-block;
@@ -24,7 +24,7 @@
     }
     
     .skillsWrap{
-        margin-top: 80px;
+        margin-top: 50px;
         display: flex;
         justify-content: space-between;
         padding: 0 5%;

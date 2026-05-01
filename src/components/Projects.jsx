@@ -13,15 +13,15 @@ import '../style/projects.scss';
 const slides = [
   {
     img: "/img/slider1.jpg",
-    title: "관악구청 클론코딩",
-    subtitle: "HTML / CSS / Swiper / API / JavaScript \n 메인페이지만 제작 \n 개인 100%",
+    title: "관악구청",
+    subtitle: "HTML / CSS / Swiper / API / JavaScript \n 클론코딩 / 메인페이지만 제작 \n 개인 100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-gu_clone/",
     gitLink: "https://github.com/ksyeon068/Gwanak-gu_clone"
   },
   {
     img: "/img/slider2.jpg",
-    title: "관악성모이비인후과 클론코딩",
-    subtitle: "HTML / SCSS / Swiper / JavaScript \n 반응형으로 제작 \n 개인 100%",
+    title: "관악성모이비인후과",
+    subtitle: "HTML / SCSS / Swiper / JavaScript \n 클론코딩 / 반응형으로 제작 \n 개인 100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-S-ENT/",
     gitLink: "https://github.com/ksyeon068/Gwanak-S-ENT"
   },
