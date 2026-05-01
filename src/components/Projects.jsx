@@ -37,14 +37,14 @@ const slides = [
     title: "ECLAT",
     subtitle: "React / SCSS / Swiper / AI활용 \n 팀프로젝트 / AI이미지 생성 / 기획 / 디자인 \n 데이터 파일 생성&관리, Details",
     siteLink: "https://eclat-t.vercel.app/",
-    gitLink: "https://github.com/seongeun040624/eclatT.git"
+    gitLink: "https://github.com/seongeun040624/eclatT"
   },
   {
     img: "/img/slider5.jpg",
     title: "Portfolio",
     subtitle: "React / SCSS / Swiper / AI활용 \n 반응형으로 제작 / Vercel배포 / 기획 / 디자인\n 개인 100%",
-    siteLink: "https://eclat-t.vercel.app/",
-    gitLink: "https://github.com/seongeun040624/eclatT.git"
+    siteLink: "https://portfolio-three-rosy-8ja0vftp29.vercel.app/",
+    gitLink: "https://github.com/ksyeon068/portfolio"
   }
 ];
 
