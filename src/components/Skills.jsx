@@ -75,7 +75,7 @@ const Skills = () => {
 
     return (
         <div className='skills' ref={ref}>
-            <div className="reveal_s">
+            <div className="reveal">
                 <motion.div
                     className="black-box"
                     variants={boxVariants}
