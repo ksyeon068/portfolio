@@ -88,3 +88,189 @@
         }
     }
 }
+@media screen and (max-width: 1440px){
+    .profile{
+        .reveal {
+            h3 {font-size: 50px;}
+        }
+        .profile-top{
+            padding: 0 2%;
+            gap: 15%;
+        }
+    }
+}
+@media screen and (max-width: 1280px){
+    .profile{
+        .reveal {
+            h3 {font-size: 45px;}
+        }
+        .profile-top{
+            padding: 0;
+            gap: 10%;
+            .left-img{
+                img{width: 380px;}
+            }
+            .introduce{
+                .i-top{
+                    margin-bottom: 40px;
+                }
+                ul{
+                    li{
+                        ul{
+                            li{
+                                .liText{
+                                    .boldText{
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px){
+    .profile{
+        padding: 80px 9%;
+        .reveal {
+            h3 {font-size: 40px;}
+        }
+        .profile-top{
+            gap: 8%;
+            .left-img{
+                img{width: 350px;}
+            }
+            .introduce{
+                .i-top{
+                    margin-bottom: 30px;
+                    .name{
+                        font-size: 16px;
+                        margin-bottom: 10px;
+                        span{font-weight: 600;}
+
+                    }
+                    .i-text{
+                        font-size: 14px;
+                        line-height: 160%;
+                    }
+                }
+                ul{
+                    li{
+                        margin-bottom: 15px;
+                        .ti{
+                            width: 10%;
+                            font-size: 14px;
+                            font-weight: 500;
+                            margin-right: 30px;
+                        }
+                        ul{
+                            margin-bottom: 15px;
+                            li{
+                                border-bottom:none;
+                                display: flex;
+                                flex-direction: column;
+                                margin-bottom: 10px;
+                                .date{
+                                    font-size: 15px;
+                                    font-weight: 300;
+                                    color: $point-color;
+                                    letter-spacing: .2em;
+                                }
+                                .liText{
+                                    font-size: 13px;
+                                    color: #555;
+                                    .boldText{
+                                        font-size: 15px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 760px){
+    .profile{
+        padding: 80px 9%;
+        height: auto;
+        .reveal {
+            h3 {font-size: 40px;}
+        }
+        .profile-top{
+            flex-direction: column;
+            align-items: center;
+            .left-img{
+                img{width: 350px;}
+            }
+            .introduce{
+                width: 350px;
+                margin-top: 30px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 420px){
+    .profile{
+        padding: 50px 9%;
+        height: auto;
+        .reveal {
+            h3 {font-size: 40px;}
+        }
+        .profile-top{
+            margin-top: 30px;
+            flex-direction: column;
+            align-items: center;
+            .left-img{
+                img{width: 250px;}
+            }
+            
+            .introduce{
+                width: 250px;
+                margin-top: 30px;
+                .i-top{
+                margin-bottom: 20px;
+                .name{
+                    font-size: 14px;
+                    margin-bottom: 10px;
+
+                }
+                .i-text{
+                    font-size: 12px;
+                }
+            }
+                ul{
+                    li{
+                        .ti{
+                            width: 50px;
+                            font-size: 14px;
+                        }
+                        ul{
+                            margin-bottom: 10px;
+                            li{
+                                margin-bottom: 8px;
+                                .date{
+                                    font-size: 12px;
+                                }
+                                .liText{
+                                    display: flex;
+                                    flex-direction: column;
+                                    font-size: 12px;
+                                    .boldText{
+                                        color: #333;
+                                        font-weight: 700;
+                                        font-size: 15px;
+                                        padding-right: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
