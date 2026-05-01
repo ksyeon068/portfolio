@@ -14,35 +14,35 @@ const slides = [
   {
     img: "/img/slider1.jpg",
     title: "관악구청 클론코딩",
-    subtitle: "html / css / swiper / API / JavaScript \n 메인페이지만 제작 \n 개인",
+    subtitle: "HTML / CSS / Swiper / API / JavaScript \n 메인페이지만 제작 \n 개인 100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-gu_clone/",
     gitLink: "https://github.com/ksyeon068/Gwanak-gu_clone"
   },
   {
     img: "/img/slider2.jpg",
     title: "관악성모이비인후과 클론코딩",
-    subtitle: "html / scss / swiper / JavaScript \n 반응형으로 제작 \n 개인",
+    subtitle: "HTML / SCSS / Swiper / JavaScript \n 반응형으로 제작 \n 개인 100%",
     siteLink: "https://ksyeon068.github.io/Gwanak-S-ENT/",
     gitLink: "https://github.com/ksyeon068/Gwanak-S-ENT"
   },
   {
     img: "/img/slider3.jpg",
     title: "MoodScape",
-    subtitle: "react / scss / API / swiper \n 팀프로젝트 / git관리 / Vercel배포 \n Header, Footer, Section3",
+    subtitle: "React / SCSS / API / Swiper / AI활용\n 팀프로젝트 / git관리 / Vercel배포 / 기획 / 디자인 \n Header, Footer, Section3",
     siteLink: "https://mood-scape-umber.vercel.app/",
     gitLink: "https://github.com/ksyeon068/MoodScape"
   },
   {
     img: "/img/slider4.jpg",
     title: "ECLAT",
-    subtitle: "react / scss / swiper \n 팀프로젝트 / 데이터 파일 생성&관리 \n Details / 반응형,로그인페이지 연동예정",
+    subtitle: "React / SCSS / Swiper / AI활용 \n 팀프로젝트 / AI이미지 생성 / 기획 / 디자인 \n 데이터 파일 생성&관리, Details",
     siteLink: "https://eclat-t.vercel.app/",
     gitLink: "https://github.com/seongeun040624/eclatT.git"
   },
   {
     img: "/img/slider5.jpg",
     title: "Portfolio",
-    subtitle: "react / scss / swiper \n 반응형으로 제작 / Vercel배포 \n 개인 / 디테일 수정예정",
+    subtitle: "React / SCSS / Swiper / AI활용 \n 반응형으로 제작 / Vercel배포 / 기획 / 디자인\n 개인 100%",
     siteLink: "https://eclat-t.vercel.app/",
     gitLink: "https://github.com/seongeun040624/eclatT.git"
   }
@@ -100,13 +100,14 @@ const Projects = () => {
     useEffect(() => {
         const el = containerRef.current;
         if (!el) return;
-        const wheelHandler = (e) => {
+        /* const wheelHandler = (e) => {
             if (!mainSwiper) return;
             const isFirst = mainSwiper.activeIndex === 0;
             const isLast = mainSwiper.activeIndex === slides.length - 1;
 
             const isMovingNext = e.deltaY > 0 && !isLast;
             const isMovingPrev = e.deltaY < 0 && !isFirst;
+            
 
             if (isMovingNext || isMovingPrev) {
                 if (e.cancelable) e.preventDefault();
@@ -116,6 +117,30 @@ const Projects = () => {
                 else { mainSwiper.slidePrev();}
                 setTimeout(() => {isScrolling.current = false;}, 500);
             }
+        }; */
+        const wheelHandler = (e) => {
+            if (!mainSwiper) return;
+
+            const isFirst = mainSwiper.activeIndex === 0;
+            const isLast = mainSwiper.activeIndex === slides.length - 1;
+
+            const isMovingNext = e.deltaY > 0;
+            const isMovingPrev = e.deltaY < 0;
+
+            if ((isLast && isMovingNext) || (isFirst && isMovingPrev)) {
+                return;
+            }
+            if (e.cancelable) e.preventDefault();
+            if (isScrolling.current) return;
+            isScrolling.current = true;
+            if (isMovingNext) {
+                mainSwiper.slideNext();
+            } else {
+                mainSwiper.slidePrev();
+            }
+            setTimeout(() => {
+                isScrolling.current = false;
+            }, 500);
         };
         el.addEventListener("wheel", wheelHandler, { passive: false });
         return () => {
@@ -175,7 +200,7 @@ const Projects = () => {
             <div 
                 className='projects' 
                 ref={containerRef}
-                style={{ overscrollBehavior: "contain" }}
+                /* style={{ overscrollBehavior: "contain" }} */
             >
                 <div className='contentRow'>
                     <div className="leftArea">

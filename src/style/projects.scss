@@ -1,6 +1,7 @@
+@use './variables' as *;
 .projects_W{
-    background: #111;
-    padding: 150px 0 150px 13%;
+    background: $sub-color;
+    padding: 80px 80px 0 13%;
     .projects {
         overflow: hidden;
         display: flex;
@@ -18,11 +19,10 @@
                 height: 100%;
                 position: relative;
                 .textBox {
-                    flex-grow: 1;
-                    margin: 80px 0 20px 8%;
-                    height: 0;
+                    flex-grow: .1;
+                    margin: 60px 0 0px 8%;
                     .title {
-                        font-size: 28px;
+                        font-size: 25px;
                         font-weight: 600;
                         margin-bottom: 20px;
                         color: #fff;
@@ -31,7 +31,7 @@
                         font-size: 16px;
                         line-height: 150%;
                         white-space: pre-line;
-                        color: #b6b6b6;
+                        color: $sub-Tcolor;
                         margin-bottom: 15px;
                     }
                     a{
@@ -61,10 +61,10 @@
                     cursor: pointer;
                     flex-grow: 1;
                     height: auto;
-                    max-height: 700px;
+                    max-height: 500px;
                     .swiper-wrapper {
                         gap: 10px;
-                        height: 400px;
+                        height: 300px;
                         .swiper-slide{
                             position: relative;
                             display: flex;
@@ -91,20 +91,20 @@
                 .scrollbox{
                     top: 0;
                     margin-top: 7px;
-                    width: 18px;
-                    height: 18px;
+                    width: 15px;
+                    height: 15px;
                     background: #14a9ff;
                     position: absolute;
-                    top: 38%;
-                    right: 45%;
+                    top: 32%;
+                    right: 55%;
                     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
                     pointer-events: none;
                     z-index: 10;
                 }
             }
             .mainSwiper{
-                width: 70%;
-                height: 80%;
+                width: 66%;
+                height: 66%;
                 flex: none;
                 position: relative;
                 top: 14%;
