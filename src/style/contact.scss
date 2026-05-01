@@ -57,7 +57,7 @@
                     }
                     transition: 0.3s;
                     &:hover {
-                        color: #0f8dd6;
+                        color: $point-color;
                         &::after {
                             opacity: 1;
                             transform: translateX(0);
